@@ -1,6 +1,5 @@
 import { Environment } from "@react-three/drei";
 import Office from "./Office";
-import { EffectComposer, Bloom, SSAO } from "@react-three/postprocessing";
 
 export default function Scene() {
   return (
