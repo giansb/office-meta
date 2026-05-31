@@ -13,7 +13,7 @@ function getChairName(mesh: THREE.Mesh): string | null {
 }
 
 export default function Office() {
-  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/chrome_5.glb`);
+  const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/chrome_6.glb`);
   const { reservedChairs, selectedChair, setSelectedChair } =
     useReservationStore();
 

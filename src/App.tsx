@@ -288,8 +288,7 @@ export default function App() {
           </div>
 
           <Canvas shadows camera={{ position: [0, 19, 2], fov: 45 }}>
-            <directionalLight position={[10, 10, 5]} intensity={2} castShadow />
-            <Scene />
+            <Scene hour={new Date().getHours()} />
             <CameraController is3D={is3D} />
             <OrbitControls target={[0, 0, 0]} enabled={is3D} />
           </Canvas>
