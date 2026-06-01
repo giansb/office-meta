@@ -1,13 +1,87 @@
-# React + TypeScript + Vite
+# Vortigo Meta — Reserva de Assentos 3D
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação web interativa para reserva de assentos em dias presenciais, com escritório 3D renderizado em tempo real diretamente no browser. O ambiente visual muda automaticamente de acordo com a hora do sistema do usuário.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades
 
-## React Compiler
+### Reserva de assentos
+- Clique em qualquer cadeira **disponível** (azul) para selecioná-la.
+- Um painel lateral exibe a confirmação; clique em **Confirmar** para reservar ou **Cancelar** para desistir.
+- Cadeiras reservadas ficam vermelhas e não podem mais ser selecionadas.
+- Feedback visual por outline colorido diretamente na malha 3D:
+  - 🔵 **Azul** — disponível
+  - 🟡 **Amarelo** — selecionada
+  - 🔴 **Vermelho** — reservada
+
+### Ciclo dia/noite automático
+A iluminação e o céu se adaptam à **hora real do sistema** em quatro períodos:
+
+| Período | Horário | Visual |
+|---|---|---|
+| Madrugada/Noite | 21h – 5h | Fundo escuro, sem céu |
+| Manhã | 6h – 10h | Sol baixo a leste, céu âmbar/rosado |
+| Tarde | 11h – 16h | Sol alto, céu azul |
+| Pôr do sol | 17h – 20h | Sol no horizonte, céu laranja intenso |
+
+### Visualização Plano / 3D
+- Botão toggle no canto superior direito alterna entre **vista superior (plano)** e **câmera 3D** com rotação livre.
+- A transição de câmera é animada suavemente via GSAP.
+
+---
+
+## Stack e bibliotecas
+
+| Lib | Versão | Papel |
+|---|---|---|
+| **React** | 19 | UI e gerenciamento de ciclo de vida |
+| **TypeScript** | 6 | Tipagem estática |
+| **Vite** | 8 | Bundler e dev server |
+| **Three.js** | 0.184 | Motor de renderização 3D (WebGL) |
+| **@react-three/fiber** | 9 | Renderer React para Three.js |
+| **@react-three/drei** | 10 | Utilitários 3D: `Sky`, `Environment`, `OrbitControls`, `useGLTF` |
+| **@react-three/postprocessing** | 3 | Efeitos de pós-processamento |
+| **GSAP** | 3 | Animações de câmera com easing |
+| **Zustand** | 5 | Estado global das reservas |
+| **gh-pages** | 6 | Deploy automático no GitHub Pages |
+
+---
+
+## Estrutura do projeto
+
+```
+src/
+├── App.tsx          # Layout, câmera, toggle 2D/3D e modal de reserva
+├── store.ts         # Estado global (Zustand): cadeiras reservadas e selecionada
+└── components/
+    ├── Scene.tsx    # Iluminação e céu dinâmicos baseados na hora do sistema
+    └── Office.tsx   # Modelo GLTF do escritório + lógica de seleção de cadeiras
+public/
+└── models/
+    └── chrome_6.glb # Modelo 3D do escritório
+```
+
+---
+
+## Rodando localmente
+
+```bash
+npm install
+npm run dev
+```
+
+## Build e deploy
+
+```bash
+# Build de produção
+npm run build
+
+# Deploy no GitHub Pages
+npm run deploy
+```
+
+O deploy publica o conteúdo de `dist/` na branch `gh-pages`. A base da URL está configurada como `/office-meta/` no `vite.config.ts`.
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
