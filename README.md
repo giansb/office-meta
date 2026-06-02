@@ -15,16 +15,6 @@ Aplicação web interativa para reserva de assentos em dias presenciais, com esc
   - 🟡 **Amarelo** — selecionada
   - 🔴 **Vermelho** — reservada
 
-### Ciclo dia/noite automático
-A iluminação e o céu se adaptam à **hora real do sistema** em quatro períodos:
-
-| Período | Horário | Visual |
-|---|---|---|
-| Madrugada/Noite | 21h – 5h | Fundo escuro, sem céu |
-| Manhã | 6h – 10h | Sol baixo a leste, céu âmbar/rosado |
-| Tarde | 11h – 16h | Sol alto, céu azul |
-| Pôr do sol | 17h – 20h | Sol no horizonte, céu laranja intenso |
-
 ### Visualização Plano / 3D
 - Botão toggle no canto superior direito alterna entre **vista superior (plano)** e **câmera 3D** com rotação livre.
 - A transição de câmera é animada suavemente via GSAP.

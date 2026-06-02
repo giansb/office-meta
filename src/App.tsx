@@ -287,8 +287,8 @@ export default function App() {
             </span>
           </div>
 
-          <Canvas shadows camera={{ position: [0, 19, 2], fov: 45 }}>
-            <Scene hour={new Date().getHours()} />
+          <Canvas camera={{ position: [0, 19, 2], fov: 45 }}>
+            <Scene />
             <CameraController is3D={is3D} />
             <OrbitControls target={[0, 0, 0]} enabled={is3D} />
           </Canvas>

@@ -19,11 +19,6 @@ export default function Office() {
 
   useEffect(() => {
     scene.traverse((obj: any) => {
-      if (obj.isMesh) {
-        obj.castShadow = true;
-        obj.receiveShadow = true;
-      }
-
       if (obj.isMesh && CHAIR_PATTERN.test(obj.name)) {
         const existing = obj.children.find((c: THREE.Object3D) => c.userData.isOutline);
         if (existing) obj.remove(existing);
